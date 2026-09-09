@@ -1,0 +1,8 @@
+// Hundred Years War client skin pack configuration
+// Missing packs and skins use their built-in defaultEnabled value.
+// Missing pack options use the defaults declared by that skin pack.
+{
+  "skinPacks": {},
+  "skinEntries": {},
+  "packOptions": {}
+}

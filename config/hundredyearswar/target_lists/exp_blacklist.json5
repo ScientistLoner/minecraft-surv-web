@@ -1,0 +1,6 @@
+// Experience blacklist - these entities won't grant experience when killed by units
+// Format: "namespace:entity_id"
+// Example: "minecraft:silverfish" for silverfish
+[
+  "minecraft:silverfish"
+]

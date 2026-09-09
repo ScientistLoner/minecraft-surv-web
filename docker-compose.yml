@@ -1,0 +1,76 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mc_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: minecraft_db
+      POSTGRES_USER: mc_admin
+      POSTGRES_PASSWORD: mc_secret_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mc_admin -d minecraft_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mc_webapp
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./public/downloads:/app/public/downloads
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: minecraft_db
+      DB_USER: mc_admin
+      DB_PASSWORD: mc_secret_2024
+      JWT_SECRET: Jj9K_kgCjVh4evmQc5jEY06UJ318FmBsDmg9n5tsT7nTFd41AnRS-sMJ_nSYRN0o
+      JWT_EXPIRES_IN: 7d
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN:-}
+      TG_CHAT_ID: ${TG_CHAT_ID:-}
+      TG_BOT_USERNAME: ${TG_BOT_USERNAME:-}
+      CONTACT_EMAIL: ${CONTACT_EMAIL:-shelestovx01@gmail.com}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  logparser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mc_logparser
+    restart: unless-stopped
+    command: ["node", "src/logparser/main.js"]
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: minecraft_db
+      DB_USER: mc_admin
+      DB_PASSWORD: mc_secret_2024
+      LOG_DIR: /logs
+      STATS_DIR: /world/stats
+      USERNAME_CACHE: /usercache.json
+      POLL_MS: "4000"
+      STATS_SYNC_MS: "20000"
+    volumes:
+      - ../logs:/logs:ro
+      - ../world/stats:/world/stats:ro
+      - ../usercache.json:/usercache.json:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

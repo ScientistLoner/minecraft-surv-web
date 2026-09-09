@@ -1,0 +1,115 @@
+{
+  // Config file version
+  "configVersion": 16,
+
+  // Enable global recruitment system
+  "enableRecruitSystem": true,
+
+  // Give manual to players on first join
+  "enableFirstJoinManual": true,
+
+  // Generate scrolls in treasure chests
+  "enableScrollLootGeneration": true,
+
+  // Allow monsters to drop scrolls
+  "enableScrollMobDrops": true,
+
+  // Allow recalling soldiers to inventory (sneak + right click)
+  "allowSoldierRecall": true,
+
+  // Allow changing soldier equipment (sneak + attack)
+  "allowEquipmentChange": true,
+
+  // Whether units can drop any equipment under any circumstance
+  "dropEquipment": true,
+
+  // Whether units use managed equipment durability when attacking or taking hits
+  "enableUnitEquipmentDurability": true,
+
+  // Whether units gradually maintain managed equipment back to 50% durability (only works when enableUnitEquipmentDurability is true)
+  "enableUnitEquipmentSelfRepair": true,
+
+  // Whether units play armor or horse armor hit sounds when taking damage while protected
+  "enableArmorHitSound": true,
+
+  // Allow recalling siege units to inventory in survival mode (sneak + right click)
+  "allowSiegeRecall": false,
+
+  // Allow melee attack creepers
+  "allowMeleeAttackCreeper": false,
+
+  // Whether null-owner units are friendly to the Enemy faction: they will not fight vanilla/modded Enemy mobs,
+  // and the hostile target list / aggressive behavior below will apply only when this is true
+  "nullOwnerUnitsFriendlyToEnemy": false,
+
+  // When true and nullOwnerUnitsFriendlyToEnemy is true, null-owner non-siege units are removed in peaceful difficulty
+  "removeNullOwnerUnitsInPeacefulWhenFriendlyToEnemy": false,
+
+  // When true and nullOwnerUnitsFriendlyToEnemy is true, null-owner non-siege units can naturally despawn
+  "despawnNullOwnerUnitsWhenFriendlyToEnemy": false,
+
+  // Whether null-owner units aggressively attack all living entities except natural creatures
+  // (Animal / WaterAnimal / AmbientCreature, such as livestock, fish, squid, dolphins, and bats) and Enemy mobs
+  "nullOwnerUnitsAggressive": true,
+
+  // Whether players can damage friendly units. When false, player melee, projectiles and compatible area damage cannot hurt friendly units
+  "enablePlayerFriendlyFire": false,
+
+  // Player friendly fire damage multiplier (only used when enablePlayerFriendlyFire is true)
+  "playerFriendlyFireDamageMultiplier": 0.25,
+
+  // Whether soldiers share experience with the player upon killing mobs
+  "shareExperienceWithPlayer": true,
+
+  // Soldier follow distance configuration
+  // Follow distance (inner) - maximum follow distance when idle
+  "followDistanceInner": 5.0,
+  // Follow distance (outer) - maximum follow distance during combat
+  "followDistanceOuter": 15.0,
+
+  // Base combat entity instant pathfinding range, used for immediate pathfinding when entities are not controlled by long-range pathfinding,
+  // such as before long-range paths finish or during formation movement. Higher values make entity pathfinding smarter but impact performance heavily
+  // (e.g., 20 supports 500 entities smoothly, 200 causes lag with just 50 entities)
+  "baseCombatEntityPathfindingRange": 35.0,
+
+  // Soldier level cap
+  "soldierLevelCap": 99999,
+
+  // Enable worship mechanism (resistance boost and health regeneration based on nearby controlled entities)
+  "enableWorshipMechanism": true,
+
+  // Enable player puppets (whether to convert players into controllable units in RTS mode)
+  "enablePlayerPuppets": true,
+
+  // Restore puppet command queue when returning to player
+  "restorePuppetCommandQueue": false,
+
+  // Half-size of the survival freecam cube centered on the player (creative mode ignores this)
+  "freecamSurvivalRange": 128.0,
+  // Distance from the cube boundary where the warning border starts rendering
+  "freecamBoundaryWarningDistance": 16.0,
+
+  // Enable the HYW RTSfreecam whitelist. When false, every player may use HYW RTSfreecam
+  "enableRtsFreecamWhitelist": false,
+
+  // Player names allowed to use HYW RTSfreecam when the whitelist is enabled
+  "rtsFreecamWhitelist": [],
+
+  // Enable Better Combat integration for HYW entities (requires Better Combat)
+  "enableBetterCombatCompat": true,
+
+  // Enable Epic Fight integration (requires Epic Fight)
+  "enableEpicFightCompat": true,
+
+  // Enable Epic Knights compatibility (use Epic Knights equipment by default)
+  "enableEpicKnightsCompat": false,
+
+  // Enable automatic nearby structure simulation and materialization
+  "enableStructureGeneration": true,
+
+  // Shared main-thread building placement budget per tick (milliseconds, clamped to 1-80)
+  "buildingPlacementBudgetMillis": 40.0,
+
+  // Enable supply system (soldiers require supply and suffer penalties when not supplied)
+  "enableSupplySystem": true
+}

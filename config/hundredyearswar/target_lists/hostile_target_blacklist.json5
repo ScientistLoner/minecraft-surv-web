@@ -1,0 +1,9 @@
+// Hostile target blacklist - only used when nullOwnerUnitsFriendlyToEnemy is true
+// Format: "namespace:entity_id", or "namespace:" for all entities in a namespace
+// These entries are defaults only; after creation, this file is authoritative
+[
+  "minecraft:villager",
+  "minecraft:iron_golem",
+  "guardvillagers:guard",
+  "minecolonies:citizen"
+]

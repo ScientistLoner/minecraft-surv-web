@@ -1,0 +1,9 @@
+// Hostile target list - only used when nullOwnerUnitsFriendlyToEnemy is true
+// Format: "namespace:entity_id", or "namespace:" for all entities in a namespace
+// Entries here override the default null-owner exclusions for natural creatures and Enemy targets
+// Natural creatures include Animal / WaterAnimal / AmbientCreature (for example fish, squid, dolphins, and bats)
+// Default examples: villager and iron golem
+[
+  "minecraft:villager",
+  "minecraft:iron_golem"
+]

@@ -1,0 +1,8 @@
+// Target list - BaseCombatEntity will actively attack these entities
+// Format: "namespace:entity_id", or "namespace:" for all entities in a namespace
+// In addition to this list, soldiers will also attack enemy players, enemy soldiers, and some monsters
+[
+  "minecraft:zombie",
+  "minecraft:skeleton",
+  "minecraft:spider"
+]

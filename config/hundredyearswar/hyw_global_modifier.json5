@@ -1,0 +1,35 @@
+{
+  // Config file version
+  "configVersion": 4,
+
+  // Global damage multiplier applied once when a HYW unit deals damage to a living entity or takes damage from a living entity.
+  // This replaces the previous hardcoded GLOBAL_DAMAGE_MULTIPLIER.
+  "globalDamageMultiplier": 0.5,
+
+  // Extra multiplier for all damage dealt by HYW units. Stacks with TACZ and Iron's Spellbooks multipliers.
+  "extraDamageMultiplier": 1.0,
+
+  // Multiplier for HYW unit maximum health. The actual max health is base max health * this value.
+  "extraHealthMultiplier": 1.0,
+
+  // Global multiplier for HYW unit movement speed. The actual movement speed is base movement speed * this value.
+  "globalMovementSpeedMultiplier": 1.0,
+
+  // Global multiplier for HYW unit daily supply consumption. The actual consumption is base consumption * this value.
+  "globalSupplyConsumptionMultiplier": 1.0,
+
+  // Global multiplier for HYW ranged unit attack range and follow range. Values below 0.1 or above 1.0 are ignored.
+  "globalRangedAttackRangeMultiplier": 1.0,
+
+  // Global multiplier for recruitment order duration. The actual duration is base duration * this value, with a minimum of 1 tick.
+  "recruitmentTimeMultiplier": 1.0,
+
+  // Extra multiplier for TACZ bullet damage dealt by HYW units. Stacks with extraDamageMultiplier.
+  "taczDamageMultiplier": 1.0,
+
+  // Multiplier for TACZ bullet spread used by HYW units. Applies to both regular and shotgun spread.
+  "taczSpreadMultiplier": 1.0,
+
+  // Extra multiplier for Iron's Spellbooks magic damage dealt by HYW units. Stacks with extraDamageMultiplier.
+  "ironSpellDamageMultiplier": 1.0
+}

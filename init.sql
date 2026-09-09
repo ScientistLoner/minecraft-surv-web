@@ -1,0 +1,67 @@
+-- Начальная инициализация БД (выполняется при первом старте PostgreSQL контейнера)
+CREATE TABLE IF NOT EXISTS server_status (
+    id SERIAL PRIMARY KEY,
+    online BOOLEAN NOT NULL DEFAULT FALSE,
+    players_online INTEGER NOT NULL DEFAULT 0,
+    max_players INTEGER NOT NULL DEFAULT 20,
+    version VARCHAR(50),
+    description TEXT,
+    latency INTEGER,
+    checked_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS news (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    content TEXT NOT NULL,
+    author VARCHAR(50) NOT NULL DEFAULT 'Admin',
+    published_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS rules (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT NOT NULL,
+    sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS players (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE,
+    uuid VARCHAR(36),
+    joined_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    last_seen TIMESTAMP WITH TIME ZONE,
+    hours_played DOUBLE PRECISION NOT NULL DEFAULT 0,
+    is_banned BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE IF NOT EXISTS statistics (
+    id SERIAL PRIMARY KEY,
+    player_id INTEGER REFERENCES players(id) ON DELETE CASCADE,
+    mobs_killed INTEGER NOT NULL DEFAULT 0,
+    deaths INTEGER NOT NULL DEFAULT 0,
+    blocks_placed INTEGER NOT NULL DEFAULT 0,
+    blocks_broken INTEGER NOT NULL DEFAULT 0,
+    distance_traveled DOUBLE PRECISION NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS parser_state (
+    key TEXT PRIMARY KEY,
+    value TEXT
+);
+
+CREATE TABLE IF NOT EXISTS admins (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(200) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'admin',
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);

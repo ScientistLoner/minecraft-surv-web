@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | Сервер Minecraft</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <div class="logo-block">
+        <span class="logo-cube"></span>
+      </div>
+      <span class="logo-text">MinecraftSurv</span>
+    </a>
+    <nav class="nav">
+      <a href="#status" class="nav-link">Статус</a>
+      <a href="#news" class="nav-link">Новости</a>
+      <a href="#rules" class="nav-link">Правила</a>
+      <a href="#top" class="nav-link">Топ игроков</a>
+      <a href="#join" class="nav-link nav-cta">Играть</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-badge">Средневековое выживание • 84 мода • NeoForge 1.21</p>
+      <h1 class="hero-title">Добро пожаловать в<br><span class="accent">MinecraftSurv</span></h1>
+      <p class="hero-subtitle">Средневековый мир с фэнтези-мобами, боссами, замками, мебелью и выживанием, требующим настоящего мастерства.</p>
+      <div class="hero-actions">
+        <a href="#join" class="btn btn-primary">Подключиться</a>
+        <a href="#news" class="btn btn-ghost">Смотреть новости</a>
+      </div>
+    </div>
+
+    <div class="status-card" id="status">
+      <div class="status-head">
+        <h2>Статус сервера</h2>
+        <span class="status-badge <%= status && status.online ? 'online' : 'offline' %>" id="statusBadge">
+          <%= status && status.online ? 'ONLINE' : 'OFFLINE' %>
+        </span>
+      </div>
+
+      <div class="status-body">
+        <div class="status-row">
+          <span class="status-label">Адрес</span>
+          <span class="status-value mono"><%= mcHost %></span>
+          <button class="copy-btn" onclick="copyAddress()">Copy</button>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Версия</span>
+          <span class="status-value" id="statusVersion"><%= status && status.version ? status.version : '—' %></span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Портал</span>
+          <span class="status-value mono"><%= mcHost %>:<%= mcPort %></span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Игроки</span>
+          <span class="status-value">
+            <span class="online-count" id="onlineCount"><%= status ? status.players_online : 0 %></span>
+            / <span id="maxCount"><%= status ? status.max_players : 0 %></span>
+          </span>
+        </div>
+        <div class="status-bar">
+          <div class="status-bar-fill" id="playerBar" style="width: <%= status && status.max_players > 0 ? Math.min(100, (status.players_online / status.max_players) * 100) : 0 %>%"></div>
+        </div>
+        <div class="players-online" id="playersOnline" style="display: <%= status && status.online ? 'block' : 'none' %>">
+          <span class="status-label">Онлайн:</span>
+          <span id="playerList"><%= status && status.players_online > 0 ? 'загрузка...' : 'никого нет' %></span>
+        </div>
+        <div class="status-row status-footer">
+          <span class="status-label">Пинг</span>
+          <span class="status-value" id="statusPing"><%= status && status.latency ? status.latency + ' ms' : '—' %></span>
+          <span class="status-label status-right" id="statusUpdated">Обновлено: <%= status && status.checked_at ? new Date(status.checked_at).toLocaleTimeString() : '—' %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section features" id="features">
+  <div class="container">
+    <h2 class="section-title">Почему <span class="accent">мы</span>?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏰</div>
+        <h3>Средневековые постройки</h3>
+        <p>Замки, крепости, готические церкви, medieval мебель и сотни декоративных блоков.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🐉</div>
+        <h3>Боссы и мобы</h3>
+        <p>Драконы, гоблины, легендарные монстры, нежить, кобольды — 30+ новых видов врагов.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚔️</div>
+        <h3>Оружие и бой</h3>
+        <p>Система оружия, ловушки, Hundred Years War мод — настоящие средневековые сражения.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌡️</div>
+        <h3>Жёсткое выживание</h3>
+        <p>Температура, болезни, динамический свет, corpses — ванилла станет сложнее.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Население с характером</h3>
+        <p>Minecraft Comes Alive — NPC с именами, репутацией, торговлей и отдельными судьбами.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Большой мир</h3>
+        <p>Подземелья, крепости, структуры из 84 модов, JourneyMap и обновлённые биомы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section news" id="news">
+  <div class="container">
+    <h2 class="section-title">Последние <span class="accent">новости</span></h2>
+    <div class="news-grid">
+      <% news.forEach(n => { %>
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date"><%= new Date(n.published_at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) %></span>
+          <span class="news-author">@<%= n.author %></span>
+        </div>
+        <h3 class="news-title"><%= n.title %></h3>
+        <p class="news-excerpt"><%= n.content.substring(0, 120) %>...</p>
+        <button class="news-btn" onclick="openNews(<%= n.id %>)">Читать →</button>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section top" id="top">
+  <div class="container">
+    <h2 class="section-title">Топ <span class="accent">игроков</span></h2>
+    <div class="top-tabs" id="topTabs">
+      <button class="top-tab active" data-sort="hours">⏱ По часам</button>
+      <button class="top-tab" data-sort="kills">⚔ По мобам</button>
+      <button class="top-tab" data-sort="blocks">⛏ По блокам</button>
+      <button class="top-tab" data-sort="deaths">💀 По смертям</button>
+    </div>
+    <div class="top-content">
+      <div class="table-wrap">
+        <table class="top-table">
+          <thead id="topHead"></thead>
+          <tbody id="topPlayersBody"></tbody>
+        </table>
+      </div>
+      <div class="stats-summary" id="serverStats">
+        <div class="stat-tile"><span class="stat-number" id="totalPlayers">—</span><span class="stat-label">Игроков всего</span></div>
+        <div class="stat-tile"><span class="stat-number" id="totalHours">—</span><span class="stat-label">Часов сыграно</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section rules" id="rules">
+  <div class="container">
+    <h2 class="section-title">Правила <span class="accent">сервера</span></h2>
+    <div class="rules-list">
+      <% rules.forEach((rule, idx) => { %>
+      <div class="rule-item">
+        <div class="rule-num"><%= idx + 1 %></div>
+        <div class="rule-content">
+          <h3 class="rule-title"><%= rule.title %></h3>
+          <p class="rule-desc"><%= rule.description %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section join" id="join">
+  <div class="container">
+    <div class="join-card">
+      <h2 class="join-title">Присоединяйся к MinecraftSurv</h2>
+      <p class="join-sub">Собери свой Minecraft с нашим набором модов и заходи:</p>
+      <div class="join-address">
+        <code id="serverAddress"><%= mcHost %>:<%= mcPort %></code>
+        <button class="btn btn-copy" onclick="copyAddress()">Скопировать</button>
+      </div>
+      <ol class="join-steps">
+        <li><span>1</span> Скачайте архив с модами <a class="join-link" href="https://drive.google.com/file/d/1uan2b6HPHTmkamMrPCwOoFDlapllI60m/view?usp=sharing" target="_blank" rel="noopener">по ссылке</a> и распакуйте папку <code>mods</code> в <code>.minecraft</code></li>
+        <li><span>2</span> Установите NeoForge для версии <b>1.21.1</b></li>
+        <li><span>3</span> Откройте Minecraft и зайдите в «Сетевая игра»</li>
+        <li><span>4</span> Нажмите «Добавить сервер» и вставьте адрес</li>
+        <li><span>5</span> Готово! Заходите и играйте!</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <h2 class="section-title">Связаться с <span class="accent">нами</span></h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Есть вопрос или сообщить о нарушении?</h3>
+        <p>Напишите нам на почту, и мы ответим в ближайшее время.</p>
+        <p class="contact-email"><%= config_email %></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© <%= new Date().getFullYear() %> MinecraftSurv · <a href="<%= mcHost %>"><%= mcHost %></a></span>
+    <span class="footer-credits">Сделано с ❤ для комьюнити</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="newsModal" onclick="closeNews(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeNews()">×</button>
+    <div id="newsModalContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Адрес скопирован!</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="admin-login" id="loginView" style="display:flex">
+  <form class="login-card" id="loginForm">
+    <h2>Вход в админ-панель</h2>
+    <input type="text" id="loginUsername" placeholder="Логин" autocomplete="username" required>
+    <input type="password" id="loginPassword" placeholder="Пароль" autocomplete="current-password" required>
+    <div id="loginError" class="error-msg"></div>
+    <button type="submit" class="btn btn-primary" id="loginBtn">Войти</button>
+  </form>
+</div>
+
+<div class="admin-dash" id="dashboardView" style="display:none">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <h1>Админ-панель</h1>
+      <div class="header-actions">
+        <span class="admin-user" id="adminUser"></span>
+        <a href="/" class="btn btn-ghost">На сайт</a>
+        <button class="btn btn-ghost" id="logoutBtn">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="news">Новости</button>
+    <button class="tab" data-tab="rules">Правила</button>
+    <button class="tab" data-tab="players">Игроки</button>
+    <button class="tab" data-tab="messages">Сообщения</button>
+  </nav>
+
+  <main class="admin-main container">
+
+    <!-- Новости -->
+    <section class="tab-panel active" id="tab-news">
+      <div class="panel-head">
+        <h3>Новости</h3>
+        <button class="btn btn-primary" id="newNewsBtn">+ Новая новость</button>
+      </div>
+      <form class="editor-form" id="newsForm" style="display:none">
+        <input type="hidden" id="newsId">
+        <input type="text" id="newsTitle" placeholder="Заголовок" required>
+        <input type="text" id="newsAuthor" placeholder="Автор" value="Admin">
+        <textarea id="newsContent" rows="6" placeholder="Текст новости (переносы строк сохраняются)" required></textarea>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="newsSaveBtn">Сохранить</button>
+          <button type="button" class="btn btn-ghost" id="newsCancelBtn">Отмена</button>
+        </div>
+      </form>
+      <ul class="admin-list" id="newsList"></ul>
+    </section>
+
+    <!-- Правила -->
+    <section class="tab-panel" id="tab-rules">
+      <div class="panel-head">
+        <h3>Правила</h3>
+        <button class="btn btn-primary" id="newRuleBtn">+ Новое правило</button>
+      </div>
+      <form class="editor-form" id="ruleForm" style="display:none">
+        <input type="hidden" id="ruleId">
+        <input type="text" id="ruleTitle" placeholder="Заголовок правила" required>
+        <input type="number" id="ruleOrder" placeholder="Порядок (1, 2, 3...)" value="1">
+        <textarea id="ruleDesc" rows="4" placeholder="Описание правила" required></textarea>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="ruleSaveBtn">Сохранить</button>
+          <button type="button" class="btn btn-ghost" id="ruleCancelBtn">Отмена</button>
+        </div>
+      </form>
+      <ul class="admin-list" id="rulesList"></ul>
+    </section>
+
+    <!-- Игроки -->
+    <section class="tab-panel" id="tab-players">
+      <div class="panel-head">
+        <h3>Игроки</h3>
+        <p class="panel-note">Данные собирает парсер логов автоматически. Здесь можно банить/разбанивать и удалять.</p>
+      </div>
+      <ul class="admin-list" id="playersList"></ul>
+    </section>
+
+    <!-- Сообщения -->
+    <section class="tab-panel" id="tab-messages">
+      <div class="panel-head">
+        <h3>Сообщения с формы</h3>
+      </div>
+      <ul class="admin-list" id="messagesList"></ul>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast">Сохранено</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
