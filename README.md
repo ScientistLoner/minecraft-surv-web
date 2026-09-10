@@ -16,6 +16,14 @@
 - **Админ-панель** — CRUD новостей, правил, игроков и сообщений; JWT-аутентификация.
 - **RAW SQL + ORM** — часть запросов (топ, история, статистика) выполнена на «сыром» SQL с JOIN, CRUD — через Sequelize.
 
+## Скриншоты
+
+![Главная страница](screenshots/main.png)
+
+![Топ игроков](screenshots/top.png)
+
+![Админ-панель](screenshots/admin.png)
+
 ## Технологии
 
 | Слой | Инструменты |
@@ -49,7 +57,11 @@ npm run dev     # nodemon, автоперезагрузка
 
 ## Конфигурация
 
-Настройки задаются через **`.env`** (файл не попадает в репозиторий; список переменных см. в `docker-compose.yml`):
+Настройки задаются через **`.env`** (файл не попадает в репозиторий). Сделайте копию шаблона `.env.example` с пустыми значениями и заполните свои:
+
+```bash
+cp .env.example .env
+```
 
 | Переменная | Назначение | По умолчанию |
 |---|---|---|
@@ -57,9 +69,8 @@ npm run dev     # nodemon, автоперезагрузка
 | `DB_HOST` | Хост PostgreSQL | `localhost` / `postgres` (Docker) |
 | `DB_USER / DB_PASSWORD / DB_NAME` | Доступ к БД | — |
 | `JWT_SECRET` | Секрет подписи токенов | — |
-| `MC_HOST / MC_PORT` | Адрес Minecraft-сервера | `:25565` |
-| `MC_CALLBACK_INTERVAL` | Период проверки статуса, мин | `60` |
-| `TG_BOT_TOKEN` | (опц.) уведомления в Telegram | `''` |
+| `MC_HOST / MC_PORT` | Адрес Minecraft-сервера | `localhost:25565` |
+| `CONTACT_EMAIL` | (опц.) email, показываемый на странице | `shelestovx01@gmail.com` |
 
 ## API
 
@@ -83,8 +94,9 @@ Web_project/
 ├── docker-compose.yml      # PostgreSQL + приложение
 ├── Dockerfile              # Образ Node.js приложения
 ├── init.sql                # Схема БД при первом старте
-├── .env                    # Конфигурация (не попадает в git)
+├── .env.example            # Шаблон конфигурации (заполните и переименуйте в .env)
 ├── public/                 # Статика: CSS, JS, файлы для скачивания
+├── screenshots/            # Скриншоты для README
 └── src/
     ├── index.js            # Точка входа (Express)
     ├── seed.js             # Сиды тестовых данных
@@ -93,7 +105,7 @@ Web_project/
     ├── models/             # Sequelize модели
     ├── queries/            # RAW SQL запросы
     ├── routes/             # REST API
-    ├── services/           # mcstatus-опрос, Telegram-уведомления
+    ├── services/           # mcstatus-опрос сервера (в фоне)
     ├── views/              # EJS-шаблоны (index, admin)
     └── logparser/          # Разбор логов сервера
 ```
