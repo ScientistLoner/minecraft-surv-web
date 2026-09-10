@@ -5,6 +5,8 @@
 
 Стек: **Node.js · Express · PostgreSQL · Sequelize (ORM) · RAW SQL · Docker · EJS**
 
+Живой проект: [minecraftsurv.viewdns.net:3000](http://minecraftsurv.viewdns.net:3000/)
+
 ## Возможности
 
 - **Статус сервера в реальном времени** — фоновый опрос сервера каждую минуту: онлайн, игроки онлайн/макс., версия, пинг, история доступности за 7 дней.
@@ -70,7 +72,7 @@ cp .env.example .env
 | `DB_USER / DB_PASSWORD / DB_NAME` | Доступ к БД | — |
 | `JWT_SECRET` | Секрет подписи токенов | — |
 | `MC_HOST / MC_PORT` | Адрес Minecraft-сервера | `localhost:25565` |
-| `CONTACT_EMAIL` | (опц.) email, показываемый на странице | `shelestovx01@gmail.com` |
+| `CONTACT_EMAIL` | (опц.) email, показываемый на странице | `admin@example.com` |
 
 ## API
 
