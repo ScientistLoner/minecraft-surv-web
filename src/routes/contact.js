@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { sequelize } = require('../models');
 const { requireAuth } = require('../middleware/auth');
-const { notifyNewMessage } = require('../services/notify');
 
 const router = Router();
 
@@ -16,8 +15,6 @@ router.post('/', async (req, res) => {
       'INSERT INTO contact_messages (name, email, message) VALUES (:name, :email, :message) RETURNING *',
       { replacements: { name, email, message } }
     );
-    // Уведомление в Telegram (не блокирует ответ клиенту)
-    notifyNewMessage({ name, email, message }).catch(() => {});
     res.status(201).json(result[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });

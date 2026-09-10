@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: minecraft_db
       POSTGRES_USER: mc_admin
-      POSTGRES_PASSWORD: mc_secret_2024
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mc_secret_2024}
     ports:
       - "5432:5432"
     volumes:
@@ -34,12 +34,9 @@ services:
       DB_PORT: 5432
       DB_NAME: minecraft_db
       DB_USER: mc_admin
-      DB_PASSWORD: mc_secret_2024
-      JWT_SECRET: Jj9K_kgCjVh4evmQc5jEY06UJ318FmBsDmg9n5tsT7nTFd41AnRS-sMJ_nSYRN0o
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-mc_secret_2024}
+      JWT_SECRET: ${JWT_SECRET:-change-me}
       JWT_EXPIRES_IN: 7d
-      TG_BOT_TOKEN: ${TG_BOT_TOKEN:-}
-      TG_CHAT_ID: ${TG_CHAT_ID:-}
-      TG_BOT_USERNAME: ${TG_BOT_USERNAME:-}
       CONTACT_EMAIL: ${CONTACT_EMAIL:-shelestovx01@gmail.com}
     depends_on:
       postgres:
@@ -58,7 +55,7 @@ services:
       DB_PORT: 5432
       DB_NAME: minecraft_db
       DB_USER: mc_admin
-      DB_PASSWORD: mc_secret_2024
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-mc_secret_2024}
       LOG_DIR: /logs
       STATS_DIR: /world/stats
       USERNAME_CACHE: /usercache.json
