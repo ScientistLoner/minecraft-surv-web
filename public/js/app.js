@@ -15,18 +15,31 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
+function fallbackCopy(done) {
+  const ta = document.createElement('textarea');
+  ta.value = serverAddress;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    done();
+  } catch (err) {
+    showToast('Не удалось скопировать — скопируйте вручную');
+  } finally {
+    document.body.removeChild(ta);
+  }
+}
+
 function copyAddress() {
-  navigator.clipboard.writeText(serverAddress)
-    .then(() => showToast('Адрес скопирован!'))
-    .catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = serverAddress;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      showToast('Адрес скопирован!');
-    });
+  const done = () => showToast('Адрес скопирован!');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(serverAddress).then(done).catch(() => fallbackCopy(done));
+    return;
+  }
+  fallbackCopy(done);
 }
 
 function rankClass(i) {
