@@ -267,7 +267,7 @@ a {
 .status-label {
   color: var(--text-muted);
   font-size: 0.9rem;
-  width: 90px;
+  width: 112px;
   flex-shrink: 0;
 }
 

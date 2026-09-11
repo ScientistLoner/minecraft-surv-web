@@ -75,7 +75,7 @@
           <span id="playerList"><%= status && status.players_online > 0 ? 'загрузка...' : 'никого нет' %></span>
         </div>
         <div class="status-row status-footer">
-          <span class="status-label">Пинг</span>
+          <span class="status-label">Пинг от сайта</span>
           <span class="status-value" id="statusPing"><%= status && status.latency ? status.latency + ' ms' : '—' %></span>
           <span class="status-label status-right" id="statusUpdated">Обновлено: <%= status && status.checked_at ? new Date(status.checked_at).toLocaleTimeString() : '—' %></span>
         </div>
