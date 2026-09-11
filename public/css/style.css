@@ -138,7 +138,7 @@ a {
 
 .hero .container {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 420px;
   gap: 60px;
   align-items: center;
 }
@@ -282,6 +282,11 @@ a {
   width: auto;
   margin-left: auto;
   font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.status-footer .status-value {
+  white-space: nowrap;
 }
 
 .online-count {
