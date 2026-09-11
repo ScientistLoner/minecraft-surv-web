@@ -47,7 +47,7 @@ app.get('/', async (req, res) => {
       rules,
       mcHost: config.minecraft.host,
       mcPort: config.minecraft.port,
-      config_email: config.contactEmail
+      config_tg: config.contactTelegram
     });
   } catch (err) {
     res.status(500).send('Error loading page: ' + err.message);

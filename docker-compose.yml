@@ -37,7 +37,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD:-mc_secret_2024}
       JWT_SECRET: ${JWT_SECRET:-change-me}
       JWT_EXPIRES_IN: 7d
-      CONTACT_EMAIL: ${CONTACT_EMAIL:-admin@example.com}
+      CONTACT_TELEGRAM: ${CONTACT_TELEGRAM:-@Scientistloner}
     depends_on:
       postgres:
         condition: service_healthy

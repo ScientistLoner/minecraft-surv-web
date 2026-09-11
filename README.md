@@ -72,7 +72,7 @@ cp .env.example .env
 | `DB_USER / DB_PASSWORD / DB_NAME` | Доступ к БД | — |
 | `JWT_SECRET` | Секрет подписи токенов | — |
 | `MC_HOST / MC_PORT` | Адрес Minecraft-сервера | `localhost:25565` |
-| `CONTACT_EMAIL` | (опц.) email, показываемый на странице | `admin@example.com` |
+| `CONTACT_TELEGRAM` | (опц.) ник в Telegram для связи | `@Scientistloner` |
 
 ## API
 

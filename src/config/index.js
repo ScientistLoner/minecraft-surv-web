@@ -18,6 +18,6 @@ module.exports = {
     secret: process.env.JWT_SECRET || 'insecure_dev_secret_change_me',
     expiresIn: process.env.JWT_EXPIRES_IN || '7d'
   },
-  contactEmail: process.env.CONTACT_EMAIL || 'admin@example.com',
+  contactTelegram: process.env.CONTACT_TELEGRAM || '@Scientistloner',
   devMode: process.env.DEV_MODE === 'true'
 };
