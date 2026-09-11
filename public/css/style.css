@@ -914,7 +914,9 @@ a {
 @media (max-width: 992px) {
   .hero .container {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
+  .hero { padding: 60px 0; }
   .features-grid,
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -922,33 +924,90 @@ a {
   .top-content {
     grid-template-columns: 1fr;
   }
+  .section { padding: 60px 0; }
+  .join-card { padding: 36px 28px; }
+  .stat-number { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero { padding: 50px 0; }
+  .hero .container { gap: 30px; }
+  .hero-actions { flex-wrap: wrap; gap: 10px; }
+  .section { padding: 50px 0; }
+  .section-title { font-size: 1.6rem; margin-bottom: 32px; }
+  .top-table th,
+  .top-table td { padding: 12px 14px; font-size: 0.9rem; }
+  .status-card { padding: 20px; }
+  .join-card { padding: 30px 20px; border-radius: 14px; }
+  .join-title { font-size: 1.6rem; }
+  .join-address { flex-wrap: wrap; gap: 8px; padding: 8px; }
+  .join-address code { font-size: 0.95rem; flex: 1 1 100%; text-align: center; }
+  .btn-copy { width: 100%; text-align: center; }
+  .contact-info h3 { font-size: 1.2rem; }
+  .footer-inner { font-size: 0.85rem; padding: 16px 0; }
 }
 
 @media (max-width: 640px) {
-  .nav {
-    gap: 14px;
-  }
-  .nav-link {
-    font-size: 0.9rem;
-  }
+  .header-inner { height: auto; min-height: 60px; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 10px 0; }
+  .nav { flex-wrap: wrap; justify-content: center; gap: 10px 14px; width: 100%; }
+  .nav-link { font-size: 0.85rem; }
+  .logo { font-size: 1.1rem; }
+  .logo-block { width: 30px; height: 30px; }
+  .logo-cube { width: 14px; height: 14px; }
+  .hero { padding: 40px 0; }
+  .hero .container { gap: 24px; }
+  .hero-title { font-size: 1.8rem; }
+  .hero-subtitle { font-size: 0.95rem; margin-bottom: 20px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { text-align: center; }
+  .section { padding: 40px 0; }
+  .section-title { font-size: 1.4rem; margin-bottom: 24px; }
   .features-grid,
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .hero-title {
-    font-size: 2rem;
-  }
-  .section {
-    padding: 50px 0;
-  }
-  .footer-inner {
-    flex-direction: column;
-    gap: 6px;
-    justify-content: center;
-    padding: 20px 0;
-    height: auto;
-  }
+  .news-grid { grid-template-columns: 1fr; gap: 16px; }
+  .feature-card,
+  .news-card { padding: 20px; }
+  .feature-card h3 { font-size: 1rem; }
+  .feature-card p { font-size: 0.9rem; }
+  .news-title { font-size: 1rem; }
+  .top-table th,
+  .top-table td { padding: 10px 12px; font-size: 0.85rem; }
+  .rank-badge { width: 24px; height: 24px; font-size: 0.8rem; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .stat-number { font-size: 1.8rem; }
+  .stat-tile { padding: 18px 14px; }
+  .join-card { padding: 24px 16px; border-radius: 12px; }
+  .join-title { font-size: 1.4rem; }
+  .join-steps li { font-size: 0.9rem; gap: 10px; }
+  .rules-list { gap: 12px; }
+  .rule-item { flex-direction: column; gap: 12px; padding: 18px 16px; }
+  .rule-num { align-self: flex-start; }
+  .contact-wrapper { grid-template-columns: 1fr; gap: 24px; }
+  .contact-info h3 { font-size: 1.1rem; }
+  .footer-inner { flex-direction: column; gap: 6px; justify-content: center; padding: 16px 0; height: auto; }
+  .modal { padding: 24px 16px; margin: 10px; border-radius: 12px; }
+  .modal-title { font-size: 1.3rem; }
+  .toast { padding: 10px 20px; font-size: 0.9rem; bottom: 16px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 12px; }
+  .hero { padding: 30px 0; }
+  .hero-title { font-size: 1.5rem; }
+  .hero-badge { font-size: 0.78rem; padding: 5px 10px; }
+  .section { padding: 30px 0; }
+  .section-title { font-size: 1.25rem; margin-bottom: 20px; }
+  .feature-card,
+  .news-card { padding: 16px; }
+  .news-meta { font-size: 0.8rem; }
+  .top-table th { font-size: 0.78rem; text-transform: none; }
+  .top-table td { font-size: 0.82rem; padding: 8px 10px; }
+  .stat-number { font-size: 1.6rem; }
+  .stat-tile { padding: 14px 12px; }
+  .join-address code { font-size: 0.88rem; }
+  .contact-info h3 { font-size: 1.1rem; }
+  .contact-info p { font-size: 0.9rem; }
+  .contact-email { font-size: 1rem; }
 }
