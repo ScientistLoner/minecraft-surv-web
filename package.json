@@ -7,7 +7,10 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "seed": "node src/seed.js",
-    "migrate": "node src/migrate.js"
+    "migrate": "node src/migrate.js",
+    "test": "node --test tests/unit/auth.test.js tests/unit/formatMotd.test.js",
+    "test:integration": "node --test tests/integration/api.test.js",
+    "test:all": "node --test"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
